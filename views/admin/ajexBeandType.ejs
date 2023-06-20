@@ -1,0 +1,26 @@
+<div class="form-group row">
+    <label class="col-sm-12 col-md-2 col-form-label">Select Brand</label>
+    <div class="col-sm-12 col-md-10">
+        <select class="custom-select col-12" name="brandId" id="">
+            <option selected="">--Select Brand--</option>
+            <% for(var bd of brandData){ %>
+                <option value="<%= bd.id %>">
+                    <%= bd.brand_name %>
+                </option>
+                <% } %>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-12 col-md-2 col-form-label">Select Type</label>
+    <div class="col-sm-12 col-md-10">
+        <select class="custom-select col-12" name="typeId" id="">
+            <option selected="">--Select Type--</option>
+            <% for(var td of typeData){ %>
+                <option value="<%= td.id %>">
+                    <%= td.type_name %>
+                </option>
+                <% } %>
+        </select>
+    </div>
+</div>

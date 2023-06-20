@@ -1,0 +1,137 @@
+<%- include('admin_header') %>
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <!-- Default Basic Forms Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Add Product</h4>
+                        </div>
+                    </div>
+                    <form method="post" action="/product/insertproduct" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Select Category</label>
+                            <div class="col-sm-12 col-md-10">
+                                <select class="form-control col-12" name="categoryId" id="categoryId"
+                                    onchange="getsubcategoryId()">
+                                    <option selected="">--Select Categoty--</option>
+                                    <% for(let a of catData){ %>
+                                        <option value="<%= a.id %>">
+                                            <%= a.category_name %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Select Sub Category</label>
+                            <div class="col-sm-12 col-md-10">
+                                <select class="custom-select col-12" name="subcategoryId" id="subcategoryId"
+                                    onchange="getExtraCategoryData()">
+                                    <option selected="">--Select Sub Categoty--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Select Extra Category</label>
+                            <div class="col-sm-12 col-md-10">
+                                <select class="custom-select col-12" name="extracategoryId" id="extracategoryId"
+                                    onchange="getBrandTypeData()">
+                                    <option selected="">--Select Extra Category--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="BrandTypeData" id="BrandTypeData">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Select Brand</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <select class="custom-select col-12" name="brandId" id="">
+                                        <option selected="">--Select Brand--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Select Type</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <select class="custom-select col-12" name="typeId" id="">
+                                        <option selected="">--Select Type--</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Enter Product</label>
+                            <div class="col-sm-12 col-md-10">
+                                <input class="form-control" type="text" placeholder="Enter Product Name"
+                                    name="product_name" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Enter Product Price</label>
+                            <div class="col-sm-12 col-md-10">
+                                <input class="form-control" type="text" placeholder="Enter Price" name="price" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Enter Product Old Price</label>
+                            <div class="col-sm-12 col-md-10">
+                                <input class="form-control" type="text" placeholder="Enter Old Price"
+                                    name="old_price" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">rating</label>
+                            <div class="custom-control custom-radio m-2">
+                                <input type="radio" id="customRadio1" name="rating" value="1"
+                                    class="custom-control-input" />
+                                <label class="custom-control-label" for="customRadio1">1</label>
+                            </div>
+                            <div class="custom-control custom-radio m-2">
+                                <input type="radio" id="customRadio2" name="rating" value="2"
+                                    class="custom-control-input" />
+                                <label class="custom-control-label" for="customRadio2">2</label>
+                            </div>
+                            <div class="custom-control custom-radio m-2">
+                                <input type="radio" id="customRadio3" name="rating" value="3"
+                                    class="custom-control-input" />
+                                <label class="custom-control-label" for="customRadio3">3</label>
+                            </div>
+                            <div class="custom-control custom-radio m-2">
+                                <input type="radio" id="customRadio4" name="rating" value="4"
+                                    class="custom-control-input" />
+                                <label class="custom-control-label" for="customRadio4">4</label>
+                            </div>
+                            <div class="custom-control custom-radio m-2">
+                                <input type="radio" id="customRadio5" name="rating" value="5"
+                                    class="custom-control-input" />
+                                <label class="custom-control-label" for="customRadio5">5</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Discription</label>
+                            <textarea class="form-control" name="discription"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Custom file input</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" />
+                                <label class="custom-file-label">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Custom file input</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" multiple name="images" />
+                                <label class="custom-file-label">Choose file</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    </form>
+
+                    <!-- Default Basic Forms End -->
+
+
+
+                    <%- include('admin_footer') %>

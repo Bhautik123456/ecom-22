@@ -1,0 +1,71 @@
+<%- include('admin_header') %>
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <!-- basic table  Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix mb-20">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Basic Table</h4>
+                            <p>Add class <code>.table</code></p>
+                        </div>
+                        <div class="pull-right">
+                            <a href="#basic-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"
+                                data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Hobby</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Textarea</th>
+                                <th scope="col">img</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let ad of AdminData){ %>
+                                <tr>
+                                    <td>
+                                        <%= ad.name %>
+                                    </td>
+                                    <td>
+                                        <%= ad.email %>
+                                    </td>
+                                    <td>
+                                        <%= ad.city %>
+                                    </td>
+                                    <td>
+                                        <%= ad.hobby %>
+                                    </td>
+                                    <td>
+                                        <%= ad.gender %>
+                                    </td>
+                                    <td>
+                                        <%= ad.discription %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= ad.avatar %>" height="50px" width="50px"
+                                            style="object-fit: cover;" alt="">
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- basic table  End -->
+
+            <!-- Contextual classes End -->
+        </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            DeskApp - Bootstrap 4 Admin Template By
+            <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+        </div>
+    </div>
+    </div>
+    <%- include('admin_footer') %>

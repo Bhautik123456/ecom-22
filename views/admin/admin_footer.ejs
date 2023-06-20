@@ -1,0 +1,67 @@
+<!-- welcome modal end -->
+<!-- js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="/vendors/scripts/core.js"></script>
+<script src="/vendors/scripts/script.min.js"></script>
+<script src="/vendors/scripts/process.js"></script>
+<script src="/vendors/scripts/layout-settings.js"></script>
+<script src="/src/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="/vendors/scripts/dashboard3.js"></script>
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0"
+        style="display: none; visibility: hidden"></iframe></noscript>
+
+<script>
+    function getsubcategoryId() {
+        let catId = document.getElementById('categoryId').value;
+        $.ajax({
+            url: '/extracategory/ajaxGetSubCategory',
+            method: 'post',
+            data: {
+                'categoryId': catId
+            },
+            success: function (res) {
+                $('#subcategoryId').html(res);
+            }
+        })
+    }
+    function getExtraCategoryData() {
+        let subId = document.getElementById('subcategoryId').value;
+        $.ajax({
+            url: '/brand/ajaxGetExtraCategory',
+            method: 'post',
+            data: {
+                'subcategoryId': subId
+            },
+            success: function (res) {
+                $('#extracategoryId').html(res);
+            }
+        })
+    }
+    function getBrandTypeData() {
+        let catId = document.getElementById('categoryId').value;
+        let subId = document.getElementById('subcategoryId').value;
+        let extraId = document.getElementById('extracategoryId').value;
+        $.ajax({
+            url: '/product/ajaxGetBrandType',
+            method: 'post',
+            data: {
+                'categoryId': catId,
+                'subcategoryId': subId,
+                'extracategoryId': extraId
+            },
+            success:function(res){
+                $('#BrandTypeData').html(res);
+            }
+        })
+    }
+</script>
+<!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<%- include('user_header') %>
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                <div class="row">
+                    <form action="/user/insertSignin" method="post">
+                        <div class="col-md-12 form-group">
+                            <label>First Name</label>
+                            <input class="form-control" type="text" name="name" placeholder="Enter Name">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="email" name="email" placeholder="Enter E-mail">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>password</label>
+                            <input class="form-control" type="password" name="password" placeholder="Enter Password">
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('user_footer') %>

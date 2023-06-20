@@ -1,0 +1,41 @@
+<%- include('admin_header') %>
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <!-- Default Basic Forms Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Add Sub Category</h4>
+                        </div>
+                    </div>
+                    <form method="post" action="/subcategory/insertSubCategory">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Select City</label>
+                            <div class="col-sm-12 col-md-10">
+                                <select class="custom-select col-12" name="categoryId">
+                                    <option selected="">--Select Categoty--</option>
+                                    <% for(let a of catData){ %>
+                                        <option value="<%= a.id %>">
+                                                <%= a.category_name %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Sub Category</label>
+                            <div class="col-sm-12 col-md-10">
+                                <input class="form-control" type="text" placeholder="Add Sub Category"
+                                    name="subcategory_name" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    </form>
+
+                    <!-- Default Basic Forms End -->
+
+
+                    <%- include('admin_footer') %>
